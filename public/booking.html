@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Room</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/booking.css">
+
+</head>
+
+<body>
+
+<div class="booking-container">
+
+    <h2>Book Your Stay</h2>
+
+    <form id="bookingForm">
+
+        <input
+            type="text"
+            id="customerName"
+            placeholder="Full Name"
+            required
+        >
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            required
+        >
+
+        <input
+            type="text"
+            id="phone"
+            placeholder="Phone Number"
+            required
+        >
+
+        <input
+            type="date"
+            id="checkIn"
+            required
+        >
+
+        <input
+            type="date"
+            id="checkOut"
+            required
+        >
+
+        <input
+            type="number"
+            id="guests"
+            placeholder="Guests"
+            required
+        >
+        <div id="bookingSummary">
+
+            <h3>Booking Summary</h3>
+
+            <p id="roomPrice">Room Price: ₹0</p>
+
+            <p id="totalDays">Total Days: 0</p>
+
+            <p id="totalAmount">Total Amount: ₹0</p>
+
+        </div>
+
+        <button type="submit">
+
+            Confirm Booking
+
+        </button>
+
+    </form>
+
+</div>
+
+<script src="js/booking.js"></script>
+
+</body>
+
+</html>

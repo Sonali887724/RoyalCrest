@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Royal Crest Hotel</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                <h2>ROYAL CREST</h2>
+            </div>
+
+            <ul class="nav-links">
+
+    <li><a href="#home">Home</a></li>
+
+    <li><a href="#rooms">Rooms</a></li>
+
+    <li><a href="#about">About</a></li>
+
+    <li><a href="#services">Services</a></li>
+
+    <li><a href="#gallery">Gallery</a></li>
+
+    <li><a href="#contact">Contact</a></li>
+
+    <li id = "loginNav"><a href="guest-login.html">Login</a></li>
+
+    <li id="registerNav"><a href="guest-register.html">Register</a></li>
+
+    <li id="adminNav">
+    <a href="admin-login.html">Admin</a>
+    </li>
+
+    <li id="myBookingsNav" style="display:none;">
+    <a href="my-bookings.html">My Bookings</a>
+    </li>
+
+    <li id="guestNameNav" style="display:none;">
+        <a href="#" id="guestName"></a>
+    </li>
+
+    <li id="logoutNav" style="display:none;">
+        <a href="#" onclick="logoutGuest()">Logout</a>
+    </li>
+
+
+</ul>
+
+<a href="#rooms" class="btn">Book Now</a>
+
+            <div class="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="overlay"></div>
+
+        <div class="hero-content">
+
+            <h4>Luxury Hotel & Resort</h4>
+
+            <h1>
+                The Epitome<br>
+                Of Luxury
+            </h1>
+
+            <p>
+
+                Experience elegance, comfort and world-class hospitality.
+                Discover beautifully designed rooms, premium dining,
+                wellness spa and unforgettable stays.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#rooms" class="btn">
+
+                    Discover More
+
+                </a>
+
+                <a href="#about" class="btn-outline">
+
+                    Learn More
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+
+    <section class="features">
+
+        <div class="feature">
+
+            <i class="fa-solid fa-bed"></i>
+
+            <h3>Luxury Rooms</h3>
+
+            <p>
+
+                Spacious rooms designed with elegance,
+                comfort and premium interiors.
+
+            </p>
+
+        </div>
+
+        <div class="feature">
+
+            <i class="fa-solid fa-utensils"></i>
+
+            <h3>Fine Dining</h3>
+
+            <p>
+
+                Enjoy delicious cuisines prepared by
+                world-class chefs every day.
+
+            </p>
+
+        </div>
+
+        <div class="feature">
+
+            <i class="fa-solid fa-spa"></i>
+
+            <h3>Spa & Wellness</h3>
+
+            <p>
+
+                Relax your body and mind with our
+                premium wellness treatments.
+
+            </p>
+
+        </div>
+
+    </section>
+
+        <!-- ================= ROOMS ================= -->
+
+    <section class="rooms">
+
+    <h2>Discover Our Luxury Rooms</h2>
+
+    <div class="room-container" id="rooms">
+
+        <!-- Room cards will be loaded here dynamically -->
+
+    </div>
+
+</section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section class="about" id="about">
+
+        <div class="about-image">
+
+            <img src="images/about.jpg" alt="Luxury Hotel">
+
+        </div>
+
+        <div class="about-text">
+
+            <h2>Experience Luxury Like Never Before</h2>
+
+            <p>
+
+                Royal Crest Hotel combines timeless elegance with modern
+                comfort to create unforgettable experiences for every guest.
+                Whether you're traveling for business or leisure,
+                our luxurious accommodations and exceptional hospitality
+                ensure a memorable stay.
+
+            </p>
+
+            <p>
+
+                From beautifully designed suites to award-winning dining,
+                relaxing spa treatments, and breathtaking views,
+                every detail has been thoughtfully crafted for your comfort.
+
+            </p>
+
+            <p>
+
+                Our dedicated team is available 24 hours a day to provide
+                personalized service, making every visit truly exceptional.
+
+            </p>
+
+            <a href="#services" class="btn">
+                Explore More
+            </a>
+
+        </div>
+
+    </section>
+
+        <!-- ================= SERVICES ================= -->
+
+    <section class="services" id="services">
+
+        <h2>World-Class Amenities</h2>
+
+        <div class="service-grid">
+
+            <div class="service">
+                <i class="fa-solid fa-spa"></i>
+                <h3>Spa & Wellness</h3>
+            </div>
+
+            <div class="service">
+                <i class="fa-solid fa-utensils"></i>
+                <h3>Fine Dining</h3>
+            </div>
+
+            <div class="service">
+                <i class="fa-solid fa-water-ladder"></i>
+                <h3>Infinity Pool</h3>
+            </div>
+
+            <div class="service">
+                <i class="fa-solid fa-dumbbell"></i>
+                <h3>Fitness Center</h3>
+            </div>
+
+            <div class="service">
+                <i class="fa-solid fa-wifi"></i>
+                <h3>Free High-Speed WiFi</h3>
+            </div>
+
+            <div class="service">
+                <i class="fa-solid fa-bell-concierge"></i>
+                <h3>24/7 Concierge</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= STATISTICS ================= -->
+
+    <section class="stats">
+
+        <div>
+
+            <h2 data-count="250">0</h2>
+
+            <p>Luxury Rooms</p>
+
+        </div>
+
+        <div>
+
+            <h2 data-count="5000">0</h2>
+
+            <p>Happy Guests</p>
+
+        </div>
+
+        <div>
+
+            <h2 data-count="15">0</h2>
+
+            <p>Years of Excellence</p>
+
+        </div>
+
+        <div>
+
+            <h2 data-count="24">0</h2>
+
+            <p>Hours Service</p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= GALLERY ================= -->
+
+    <section class="gallery" id="gallery">
+
+        <h2>Luxury Gallery</h2>
+
+        <div class="gallery-grid">
+
+            <img src="images/gallery1.jpg" alt="Hotel Gallery">
+
+            <img src="images/gallery2.jpg" alt="Hotel Gallery">
+
+            <img src="images/gallery3.jpg" alt="Hotel Gallery">
+
+            <img src="images/gallery4.jpg" alt="Hotel Gallery">
+
+            <img src="images/gallery5.jpg" alt="Hotel Gallery">
+
+            <img src="images/gallery6.jpg" alt="Hotel Gallery">
+
+        </div>
+
+    </section>
+
+        <!-- ================= TESTIMONIAL ================= -->
+
+    <section class="testimonial">
+
+        <h2>What Our Guests Say</h2>
+
+        <div class="testimonial-box">
+
+            <p>
+
+                "Our stay at Royal Crest Hotel was simply unforgettable.
+                The luxurious rooms, exceptional hospitality, delicious food,
+                and relaxing atmosphere made our vacation perfect.
+                We can't wait to visit again."
+
+            </p>
+
+            <h3>— Emily Watson</h3>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section class="contact" id="contact">
+
+        <h2>Contact Us</h2>
+
+        <form>
+
+            <input
+                type="text"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="email"
+                placeholder="Your Email"
+                required
+            >
+
+            <textarea
+                placeholder="Write Your Message..."
+                required
+            ></textarea>
+
+            <button
+                type="submit"
+                class="btn">
+
+                Send Message
+
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h2>Royal Crest Hotel</h2>
+
+        <p>
+
+            Luxury • Comfort • Elegance
+
+        </p>
+
+        <div class="social">
+
+            <i class="fab fa-facebook-f"></i>
+
+            <i class="fab fa-instagram"></i>
+
+            <i class="fab fa-twitter"></i>
+
+            <i class="fab fa-youtube"></i>
+
+        </div>
+
+        <p>
+
+            123 Luxury Avenue,
+            New York, USA
+
+        </p>
+
+        <p>
+
+            Phone : +1 234 567 890
+
+        </p>
+
+        <p>
+
+            Email : info@royalcresthotel.com
+
+        </p>
+
+        <br>
+
+        <hr style="border-color:#333;">
+
+        <br>
+
+        <p>
+
+            © 2026 Royal Crest Hotel.
+            All Rights Reserved.
+
+        </p>
+
+        <div class="footer-links">
+
+    <a href="#home">Home</a>
+
+    <a href="#rooms">Rooms</a>
+
+    <a href="#about">About</a>
+
+    <a href="#services">Services</a>
+
+    <a href="#" id="footerAdmin">Admin</a>
+
+</div>
+
+    </footer>
+
+    <!-- JavaScript -->
+
+    <script src="js/script.js"></script>
+    <script src="js/rooms.js"></script>
+    <script src="js/navbar.js"></script>
+
+</body>
+
+</html>

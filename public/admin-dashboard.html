@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Royal Crest Admin Dashboard</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-crown"></i>
+
+            <h2>Royal Crest</h2>
+
+            <span>Luxury Hotel</span>
+
+        </div>
+
+        <nav>
+
+            <a href="#" id="dashboardLink" class="active">
+                <i class="fa-solid fa-gauge-high"></i>
+                Dashboard
+            </a>
+
+            <a href="#" id="roomsLink">
+                <i class="fa-solid fa-bed"></i>
+                Rooms
+            </a>
+
+            <a href="#" id="bookingsLink">
+                <i class="fa-solid fa-calendar-check"></i>
+                Bookings
+            </a>
+
+            <a href="index.html">
+                <i class="fa-solid fa-globe"></i>
+                Website
+            </a>
+
+        <a href="admin-login.html" id="logoutLink">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <div class="header">
+
+            <div>
+
+                <h1>👑 Royal Crest Dashboard</h1>
+
+                <p>Luxury Hotel Management System</p>
+
+            </div>
+
+            <div class="admin-info">
+
+                Welcome, <strong>Admin</strong>
+
+            </div>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="icon">
+                    <i class="fa-solid fa-bed"></i>
+                </div>
+
+                <h3>Total Rooms</h3>
+
+                <h2 id="totalRooms">0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <div class="icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+
+                <h3>Total Bookings</h3>
+
+                <h2 id="totalBookings">0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <div class="icon">
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                </div>
+
+                <h3>Total Revenue</h3>
+
+                <h2 id="totalRevenue">₹0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <div class="icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <h3>Available Rooms</h3>
+
+                <h2 id="availableRooms">0</h2>
+
+            </div>
+
+            <div class="card">
+
+                <div class="icon">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </div>
+
+                <h3>Booked Rooms</h3>
+
+                <h2 id="bookedRooms">0</h2>
+
+            </div>
+
+        </div>
+
+        <div class="dashboard-sections">
+
+    <!-- Recent Bookings -->
+
+    <div class="recent-bookings">
+
+        <h2>
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            Recent Bookings
+        </h2>
+
+        <table id="recentBookingsTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>Guest</th>
+
+                    <th>Room</th>
+
+                    <th>Date</th>
+
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="recentBookingsBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- Quick Actions -->
+
+    <div class="quick-actions">
+
+        <h2>
+
+            <i class="fa-solid fa-bolt"></i>
+
+            Quick Actions
+
+        </h2>
+
+        <button id="addRoomBtn">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Add Room
+
+        </button>
+
+        <button id="manageRoomBtn">
+
+            <i class="fa-solid fa-bed"></i>
+
+            Manage Rooms
+
+        </button>
+
+        <button onclick="window.location.href='index.html'">
+
+            <i class="fa-solid fa-globe"></i>
+
+            View Website
+
+        </button>
+
+    </div>
+
+</div>
+
+<div id="contentArea"></div>
+
+    </main>
+
+</div>
+
+<script src="js/admin-dashboard.js"></script>
+
+</body>
+</html>

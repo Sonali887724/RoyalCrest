@@ -1,0 +1,977 @@
+/* ==========================
+   GOOGLE FONTS
+========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap');
+
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#111;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+}
+
+ul{
+    list-style:none;
+}
+
+/* ==========================
+   NAVBAR
+========================== */
+
+header{
+    position:absolute;
+    width:100%;
+    z-index:1000;
+}
+
+.navbar{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:25px 30px;
+}
+
+.logo h2,
+.logo{
+
+    color:#C8A165;
+
+    font-family:'Playfair Display',serif;
+
+    font-size:32px;
+
+    letter-spacing:2px;
+}
+
+.nav-links{
+
+    display:flex;
+
+    gap:35px;
+}
+
+.nav-links a{
+
+    color:white;
+
+    font-size:16px;
+
+    transition:.4s;
+}
+
+.nav-links a:hover{
+
+    color:#C8A165;
+}
+
+.btn{
+
+    background:#C8A165;
+
+    color:#111;
+
+    padding:14px 32px;
+
+    border-radius:40px;
+
+    font-weight:600;
+
+    transition:.4s;
+}
+
+.btn:hover{
+
+    background:white;
+
+    transform:translateY(-3px);
+}
+
+.menu-btn{
+
+    display:none;
+
+    font-size:28px;
+
+    cursor:pointer;
+}
+
+/* ==========================
+   HERO
+========================== */
+
+.hero{
+
+    position:relative;
+
+    height:100vh;
+
+    background:url("../images/hero.jpg") center center/cover no-repeat;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+}
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.60);
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:10;
+
+    max-width:850px;
+
+    padding:20px;
+}
+
+.hero-content h4{
+
+    color:#C8A165;
+
+    font-size:22px;
+
+    letter-spacing:3px;
+
+    margin-bottom:20px;
+
+    text-transform:uppercase;
+}
+
+.hero-content h1{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:75px;
+
+    line-height:1.15;
+
+    margin-bottom:25px;
+}
+
+.hero-content p{
+
+    color:#ddd;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    margin-bottom:40px;
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+}
+
+.btn-outline{
+
+    border:2px solid #C8A165;
+
+    color:white;
+
+    padding:13px 32px;
+
+    border-radius:40px;
+
+    transition:.4s;
+}
+
+.btn-outline:hover{
+
+    background:#C8A165;
+
+    color:#111;
+}
+
+/* ==========================
+   FEATURE SECTION
+========================== */
+
+.features{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:-70px auto 100px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+    position:relative;
+
+    z-index:20;
+}
+
+.feature{
+
+    background:#1b1b1b;
+
+    padding:45px 30px;
+
+    text-align:center;
+
+    border-radius:15px;
+
+    transition:.4s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+.feature:hover{
+
+    transform:translateY(-12px);
+
+    background:#222;
+}
+
+.feature i{
+
+    font-size:42px;
+
+    color:#C8A165;
+
+    margin-bottom:20px;
+}
+
+.feature h3{
+
+    margin-bottom:15px;
+
+    font-size:24px;
+
+    font-family:'Playfair Display',serif;
+}
+
+.feature p{
+
+    color:#bbb;
+
+    line-height:1.7;
+}
+
+/* ==========================
+   COMMON SECTION
+========================== */
+
+section{
+
+    padding:100px 8%;
+}
+
+section h2{
+
+    text-align:center;
+
+    font-size:48px;
+
+    margin-bottom:60px;
+
+    font-family:'Playfair Display',serif;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:991px){
+
+.hero-content h1{
+
+font-size:55px;
+
+}
+
+.features{
+
+grid-template-columns:1fr;
+
+margin-top:40px;
+
+}
+
+.nav-links{
+
+display:none;
+
+}
+
+.menu-btn{
+
+display:block;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.hero-content h1{
+
+font-size:42px;
+
+}
+
+.hero-content p{
+
+font-size:16px;
+
+}
+
+.btn,
+.btn-outline{
+
+padding:12px 24px;
+
+}
+
+.navbar{
+
+padding:20px;
+
+}
+
+}
+/* ======================================
+        ROOMS SECTION
+====================================== */
+
+.rooms{
+    background:#161616;
+    padding:100px 8%;
+}
+
+.rooms h2{
+    text-align:center;
+    font-size:48px;
+    margin-bottom:60px;
+    font-family:'Playfair Display',serif;
+    color:#fff;
+}
+
+.room-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    gap:35px;
+}
+
+.room-card{
+    background:#1f1f1f;
+    border-radius:15px;
+    overflow:hidden;
+    transition:.4s;
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.room-card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 20px 40px rgba(0,0,0,.5);
+}
+
+.room-card img{
+    height:260px;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.room-card:hover img{
+    transform:scale(1.1);
+}
+
+.room-info{
+    padding:25px;
+}
+
+.room-info h3{
+    font-family:'Playfair Display',serif;
+    font-size:28px;
+    margin-bottom:12px;
+}
+
+.room-info p{
+    color:#C8A165;
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.room-info a{
+    display:inline-block;
+    background:#C8A165;
+    color:#111;
+    padding:12px 28px;
+    border-radius:30px;
+    font-weight:600;
+    transition:.4s;
+}
+
+.room-info a:hover{
+    background:#fff;
+}
+
+
+/* ======================================
+        ABOUT SECTION
+====================================== */
+
+.about{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:70px;
+    padding:100px 8%;
+    background:#111;
+}
+
+.about-image img{
+    border-radius:15px;
+    box-shadow:0 15px 40px rgba(0,0,0,.5);
+}
+
+.about-text h2{
+
+    font-size:50px;
+    margin-bottom:25px;
+    font-family:'Playfair Display',serif;
+}
+
+.about-text p{
+
+    color:#ccc;
+    line-height:1.9;
+    margin-bottom:20px;
+    font-size:17px;
+}
+
+.about-text .btn{
+    margin-top:15px;
+}
+
+
+/* ======================================
+        SERVICES
+====================================== */
+
+.services{
+
+    background:#181818;
+    padding:100px 8%;
+}
+
+.services h2{
+
+    text-align:center;
+    font-size:48px;
+    margin-bottom:60px;
+    font-family:'Playfair Display',serif;
+}
+
+.service-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.service{
+
+    background:#222;
+    text-align:center;
+    padding:45px 25px;
+    border-radius:15px;
+    transition:.4s;
+}
+
+.service:hover{
+
+    background:#2d2d2d;
+    transform:translateY(-10px);
+}
+
+.service i{
+
+    font-size:50px;
+    color:#C8A165;
+    margin-bottom:25px;
+}
+
+.service h3{
+
+    font-size:24px;
+    font-family:'Playfair Display',serif;
+}
+
+
+/* ======================================
+        HOVER EFFECT
+====================================== */
+
+.room-card,
+.service,
+.feature{
+
+    cursor:pointer;
+}
+
+
+/* ======================================
+        RESPONSIVE
+====================================== */
+
+@media(max-width:992px){
+
+.about{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.about-image{
+
+order:1;
+
+}
+
+.about-text{
+
+order:2;
+
+}
+
+.room-container{
+
+grid-template-columns:1fr;
+
+}
+
+.service-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.rooms h2,
+.about h2,
+.services h2{
+
+font-size:38px;
+
+}
+
+.service-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.room-card img{
+
+height:220px;
+
+}
+
+.about{
+
+padding:70px 5%;
+
+}
+
+}
+/* ======================================
+        STATISTICS SECTION
+====================================== */
+
+.stats{
+    background:#0f0f0f;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+    text-align:center;
+    padding:90px 8%;
+}
+
+.stats div{
+    background:#1d1d1d;
+    padding:40px 20px;
+    border-radius:15px;
+    transition:.4s;
+}
+
+.stats div:hover{
+    transform:translateY(-10px);
+    background:#252525;
+}
+
+.stats h2{
+    color:#C8A165;
+    font-size:50px;
+    margin-bottom:10px;
+    font-family:'Playfair Display',serif;
+}
+
+.stats p{
+    color:#ddd;
+    font-size:18px;
+}
+
+
+/* ======================================
+        GALLERY SECTION
+====================================== */
+
+.gallery{
+    background:#161616;
+}
+
+.gallery h2{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.gallery-grid img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:12px;
+    transition:.5s;
+    cursor:pointer;
+}
+
+.gallery-grid img:hover{
+    transform:scale(1.08);
+    filter:brightness(1.1);
+}
+
+
+/* ======================================
+        TESTIMONIAL
+====================================== */
+
+.testimonial{
+    background:#111;
+    text-align:center;
+}
+
+.testimonial-box{
+    max-width:800px;
+    margin:auto;
+    background:#1d1d1d;
+    padding:50px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
+}
+
+.testimonial-box p{
+    font-size:20px;
+    color:#ddd;
+    line-height:1.9;
+    font-style:italic;
+}
+
+.testimonial-box h3{
+    margin-top:30px;
+    color:#C8A165;
+    font-size:24px;
+}
+
+
+/* ======================================
+        CONTACT SECTION
+====================================== */
+
+.contact{
+    background:#181818;
+}
+
+.contact h2{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.contact form{
+    max-width:700px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.contact input,
+.contact textarea{
+
+    width:100%;
+    padding:18px;
+    border:none;
+    outline:none;
+    border-radius:10px;
+    background:#2a2a2a;
+    color:#fff;
+    font-size:16px;
+}
+
+.contact textarea{
+    min-height:180px;
+    resize:none;
+}
+
+.contact button{
+    border:none;
+    cursor:pointer;
+    width:220px;
+    margin:auto;
+}
+
+
+/* ======================================
+        FOOTER
+====================================== */
+
+footer{
+
+    background:#0b0b0b;
+    text-align:center;
+    padding:60px 20px;
+}
+
+footer h2{
+
+    color:#C8A165;
+    font-family:'Playfair Display',serif;
+    margin-bottom:15px;
+}
+
+footer p{
+
+    color:#bbb;
+    margin:12px 0;
+}
+
+.social{
+
+    margin:25px 0;
+}
+
+.social i{
+
+    width:50px;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    border-radius:50%;
+    background:#1f1f1f;
+    margin:0 10px;
+    font-size:20px;
+    transition:.4s;
+    cursor:pointer;
+}
+
+.social i:hover{
+
+    background:#C8A165;
+    color:#111;
+    transform:translateY(-8px);
+}
+
+
+/* ======================================
+        CUSTOM SCROLLBAR
+====================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#C8A165;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#d7b676;
+}
+
+
+/* ======================================
+        ANIMATIONS
+====================================== */
+
+.room-card,
+.service,
+.feature,
+.stats div,
+.gallery-grid img{
+
+    transition:all .4s ease;
+}
+
+.btn,
+.hero-btn,
+.btn-outline{
+
+    transition:.4s ease;
+}
+
+
+/* ======================================
+        RESPONSIVE
+====================================== */
+
+@media(max-width:992px){
+
+.stats{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.gallery-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.stats{
+
+grid-template-columns:1fr;
+
+}
+
+.gallery-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.testimonial-box{
+
+padding:35px 25px;
+
+}
+
+.testimonial-box p{
+
+font-size:17px;
+
+}
+
+.contact form{
+
+width:100%;
+
+}
+
+footer{
+
+padding:40px 15px;
+
+}
+
+.social i{
+
+margin:6px;
+
+}
+
+}
+
+@media(max-width:500px){
+
+.hero-content h1{
+
+font-size:34px;
+
+}
+
+.hero-content h4{
+
+font-size:18px;
+
+}
+
+section{
+
+padding:70px 5%;
+
+}
+
+.stats h2{
+
+font-size:38px;
+
+}
+
+}
