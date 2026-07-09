@@ -358,3 +358,29 @@ background:#08111f;
     color:white;
 
 }
+
+.back-home{
+
+    margin-top:20px;
+
+    text-align:center;
+
+}
+
+.back-home a{
+
+    text-decoration:none;
+
+    color:#0b3b66;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.back-home a:hover{
+
+    color:#d4af37;
+
+}

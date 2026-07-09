@@ -347,3 +347,48 @@ document.body.appendChild(popup);
 
 
 console.log("Luxury Hotel Website Loaded Successfully");
+
+function updateNavbar() {
+
+    const guest = JSON.parse(localStorage.getItem("guest"));
+    const admin = JSON.parse(localStorage.getItem("admin"));
+
+    // Guest Logged In
+    if (guest) {
+
+        document.getElementById("loginNav").style.display = "none";
+        document.getElementById("registerNav").style.display = "none";
+        document.getElementById("adminNav").style.display = "none";
+
+        document.getElementById("myBookingsNav").style.display = "block";
+        document.getElementById("guestNameNav").style.display = "block";
+        document.getElementById("logoutNav").style.display = "block";
+
+        document.getElementById("guestName").textContent = guest.name || guest.username;
+
+        return;
+    }
+
+    // Admin Logged In
+    if (admin) {
+
+        document.getElementById("loginNav").style.display = "none";
+        document.getElementById("registerNav").style.display = "none";
+        document.getElementById("adminNav").style.display = "none";
+
+        document.getElementById("servicesNav").style.display = "none";
+        document.getElementById("galleryNav").style.display = "none";
+
+        document.getElementById("bookNowBtn").style.display = "none";
+
+        document.getElementById("dashboardNav").style.display = "block";
+        document.getElementById("logoutNav").style.display = "block";
+
+        document.querySelector("#dashboardNav a").href = "admin-dashboard.html";
+
+        return;
+    }
+
+}
+
+updateNavbar();

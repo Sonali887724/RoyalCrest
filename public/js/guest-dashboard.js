@@ -41,24 +41,36 @@ async function loadRecentBooking() {
 
         recentBooking.innerHTML = `
 
-            <h3>${booking.roomId.roomName}</h3>
+            <div class="recent-booking-card">
 
-            <p><strong>Status:</strong> ${booking.status}</p>
+                <div class="booking-header">
+                    <i class="fa-solid fa-hotel"></i>
+                    <h3>${booking.roomId.roomName}</h3>
+                </div>
 
-            <p><strong>Check In:</strong>
-                ${new Date(booking.checkIn).toLocaleDateString()}
-            </p>
+                <div class="booking-details">
 
-            <p><strong>Check Out:</strong>
-                ${new Date(booking.checkOut).toLocaleDateString()}
-            </p>
+                    <p><strong>Status:</strong>
+                        <span class="status">${booking.status}</span>
+                    </p>
 
-            <p><strong>Total:</strong>
-                ₹${booking.totalPrice}
-            </p>
+                    <p><strong>Check In:</strong>
+                        ${new Date(booking.checkIn).toLocaleDateString()}
+                    </p>
 
-        `;
+                    <p><strong>Check Out:</strong>
+                        ${new Date(booking.checkOut).toLocaleDateString()}
+                    </p>
 
+                    <p class="price">
+                        ₹${booking.totalPrice}
+                    </p>
+
+                </div>
+
+            </div>
+
+            `;
     }
 
     catch(error){
@@ -69,7 +81,70 @@ async function loadRecentBooking() {
 
 }
 
+async function loadBookingSummary() {
+
+    try {
+
+        const response = await fetch(`/api/bookings/guest/${guestId}`);
+
+        const result = await response.json();
+
+        if (!result.success) return;
+
+        const bookings = result.bookings;
+
+        console.log(bookings);
+
+        // Total Bookings
+        document.getElementById("totalBookings").textContent =
+            bookings.length;
+
+        // Active Bookings
+        const active = bookings.filter(
+            booking => booking.status === "Confirmed" ||
+                       booking.status === "Pending"
+        ).length;
+
+        document.getElementById("activeBookings").textContent =
+            active;
+
+        // Cancelled Bookings
+        const cancelled = bookings.filter(
+            booking => booking.status === "Cancelled"
+        ).length;
+
+        document.getElementById("cancelledBookings").textContent =
+            cancelled;
+
+        // Total Amount Spent
+        let total = 0;
+
+        bookings.forEach(booking => {
+
+            total += booking.totalPrice;
+
+        });
+
+        document.getElementById("totalSpent").textContent =
+            "₹" + total.toLocaleString("en-IN");
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+
+
+
 loadRecentBooking();
+
+loadBookingSummary();
+
 
 
 async function loadRecommendedRooms() {

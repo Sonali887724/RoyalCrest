@@ -662,3 +662,48 @@ tr:hover{
     transform:translateY(-2px);
 
 }
+/* Dashboard Charts */
+
+.chart-section{
+
+    display:flex;
+
+    gap:20px;
+
+    margin:25px 0;
+
+    flex-wrap:wrap;
+
+}
+
+.chart-card{
+
+    flex:1;
+
+    min-width:350px;
+
+    background:#fff;
+
+    padding:20px;
+
+    border-radius:12px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.chart-card h2{
+
+    margin-bottom:20px;
+
+    color:#0b3b66;
+
+}
+
+.chart-card canvas{
+
+    width:100% !important;
+
+    height:300px !important;
+
+}

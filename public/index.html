@@ -40,13 +40,13 @@
 
     <li><a href="#rooms">Rooms</a></li>
 
-    <li><a href="#about">About</a></li>
+    <li id="aboutNav"><a href="#about">About</a></li>
 
-    <li><a href="#services">Services</a></li>
+    <li id="servicesNav"><a href="#services">Services</a></li>
 
-    <li><a href="#gallery">Gallery</a></li>
+    <li id="galleryNav"><a href="#gallery">Gallery</a></li>
 
-    <li><a href="#contact">Contact</a></li>
+    <li id="contactNav"><a href="#contact">Contact</a></li>
 
     <li id = "loginNav"><a href="guest-login.html">Login</a></li>
 
@@ -68,10 +68,14 @@
         <a href="#" onclick="logoutGuest()">Logout</a>
     </li>
 
+    <li id="dashboardNav" style="display:none;">
+      <a href="guest-dashboard.html">Dashboard</a>
+    </li>
+
 
 </ul>
 
-<a href="#rooms" class="btn">Book Now</a>
+<a href="#rooms" class="btn" id="bookNowBtn">Book Now</a>
 
             <div class="menu-btn">
                 <i class="fa-solid fa-bars"></i>

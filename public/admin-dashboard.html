@@ -50,15 +50,25 @@
                 Bookings
             </a>
 
+            <a href="#" id="guestsLink">
+                <i class="fa-solid fa-users"></i>
+                Guests
+            </a>
+
+            <a href="#" id="paymentsLink">
+                <i class="fa-solid fa-credit-card"></i>
+                Payments
+            </a>
+
             <a href="index.html">
                 <i class="fa-solid fa-globe"></i>
                 Website
             </a>
 
-        <a href="admin-login.html" id="logoutLink">
-            <i class="fa-solid fa-right-from-bracket"></i>
-            Logout
-        </a>
+            <a href="#" id="logoutLink">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
 
         </nav>
 
@@ -85,6 +95,9 @@
             </div>
 
         </div>
+
+
+        <div id="dashboardContent">
 
         <div class="cards">
 
@@ -150,7 +163,41 @@
 
         </div>
 
-        <div class="dashboard-sections">
+<!-- Dashboard Charts -->
+
+<div class="chart-section">
+
+    <div class="chart-card">
+
+        <h2>
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            Monthly Revenue
+
+        </h2>
+
+        <canvas id="revenueChart"></canvas>
+
+    </div>
+
+    <div class="chart-card">
+
+        <h2>
+
+            <i class="fa-solid fa-chart-column"></i>
+
+            Monthly Bookings
+
+        </h2>
+
+        <canvas id="bookingChart"></canvas>
+
+    </div>
+
+</div>
+
+<div class="dashboard-sections">
 
     <!-- Recent Bookings -->
 
@@ -227,6 +274,8 @@
 
 </div>
 
+</div>
+
 <div id="contentArea"></div>
 
     </main>
@@ -234,6 +283,7 @@
 </div>
 
 <script src="js/admin-dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
 </html>

@@ -287,13 +287,45 @@ const changePassword = async (req, res) => {
 
 };
 
+
+const getAllGuests = async (req, res) => {
+
+    try {
+
+        const guests = await Guest.find().sort({ createdAt: -1 });
+
+        res.json({
+
+            success: true,
+
+            guests
+
+        });
+
+    }
+
+    catch (error) {
+
+        res.status(500).json({
+
+            success: false,
+
+            message: error.message
+
+        });
+
+    }
+
+};
+
 module.exports = {
     registerGuest,
     loginGuest,
     getGuestProfile,
     uploadProfileImage,
     updateGuestProfile,
-    changePassword
+    changePassword,
+    getAllGuests
 };
 
    

@@ -517,3 +517,129 @@ body{
     background:#08283d;
 
 }
+
+.recent-booking-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+
+    border-top:5px solid #d4af37;
+
+    margin-bottom:40px;
+
+}
+
+.booking-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:20px;
+
+}
+
+.booking-header i{
+
+    font-size:28px;
+
+    color:#d4af37;
+
+}
+
+.booking-header h3{
+
+    font-size:24px;
+
+    color:#0d3b66;
+
+}
+
+.booking-details p{
+
+    margin:10px 0;
+
+    font-size:17px;
+
+}
+
+.status{
+
+    color:#2ecc71;
+
+    font-weight:bold;
+
+}
+
+.price{
+
+    margin-top:20px;
+
+    font-size:26px;
+
+    color:#d4af37;
+
+    font-weight:bold;
+
+}
+
+.offers-section{
+
+    margin-top:40px;
+
+}
+
+.offer-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+.offer-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+    transition:.3s;
+
+    border-top:5px solid #d4af37;
+
+}
+
+.offer-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.offer-card h3{
+
+    margin:15px 0;
+
+    color:#0d3b66;
+
+}
+
+.offer-card p{
+
+    color:#555;
+
+}

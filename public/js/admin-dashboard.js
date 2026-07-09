@@ -74,6 +74,9 @@ bookings.slice(0,5).forEach(booking=>{
         document.getElementById("totalRevenue").textContent =
             "₹" + revenue.toLocaleString("en-IN");
 
+        loadRevenueChart(bookings);
+        loadBookingChart(bookings);
+
     } catch (error) {
 
         console.error(error);
@@ -97,6 +100,10 @@ function setActiveMenu(id){
 }
 
 async function showRooms() {
+
+
+    document.getElementById("dashboardContent").style.display = "none";
+    document.getElementById("contentArea").style.display = "block";
 
     const response = await fetch("/api/rooms");
 
@@ -594,6 +601,9 @@ async function deleteRoom(id) {
 
 async function showBookings() {
 
+    document.getElementById("dashboardContent").style.display = "none";
+    document.getElementById("contentArea").style.display = "block";
+
     try {
 
         const response = await fetch("/api/bookings");
@@ -704,6 +714,16 @@ document.getElementById("bookingsLink").addEventListener("click", (e) => {
     showBookings();
 });
 
+document.getElementById("paymentsLink").addEventListener("click",(e)=>{
+
+    e.preventDefault();
+
+    setActiveMenu("paymentsLink");
+
+    showPayments();
+
+});
+
 async function deleteBooking(id) {
 
     const confirmDelete = confirm(
@@ -749,9 +769,13 @@ document.getElementById("dashboardLink").addEventListener("click",(e)=>{
 
     setActiveMenu("dashboardLink");
 
-    loadDashboard();
+    document.getElementById("dashboardContent").style.display = "block";
 
-    document.getElementById("contentArea").innerHTML="";
+    document.getElementById("contentArea").innerHTML = "";
+
+    document.getElementById("contentArea").style.display = "none";
+
+    loadDashboard();
 
 });
 
@@ -772,6 +796,25 @@ document.getElementById("bookingsLink").addEventListener("click",(e)=>{
     setActiveMenu("bookingsLink");
 
     showBookings();
+
+});
+
+
+document.getElementById("guestsLink").addEventListener("click",(e)=>{
+
+    e.preventDefault();
+
+    setActiveMenu("guestsLink");
+
+    showGuests();
+
+});
+
+document.getElementById("logoutLink").addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    logoutAdmin();
 
 });
 
@@ -808,3 +851,261 @@ document.getElementById("manageRoomBtn").onclick = () => {
     showRooms();
 
 };
+
+// ==============================
+// Monthly Revenue Chart
+// ==============================
+
+function loadRevenueChart(bookings) {
+
+    const monthlyRevenue = new Array(12).fill(0);
+
+    bookings.forEach(booking => {
+
+        const month = new Date(booking.createdAt).getMonth();
+
+        monthlyRevenue[month] += booking.totalPrice;
+
+    });
+
+    const ctx = document.getElementById("revenueChart");
+
+    if (!ctx) return;
+
+    if (window.revenueChart instanceof Chart) {
+        window.revenueChart.destroy();
+    }
+
+    window.revenueChart = new Chart(ctx, {
+
+        type: "line",
+
+        data: {
+
+            labels: [
+                "Jan","Feb","Mar","Apr","May","Jun",
+                "Jul","Aug","Sep","Oct","Nov","Dec"
+            ],
+
+            datasets: [{
+
+                label: "Revenue (₹)",
+
+                data: monthlyRevenue,
+
+                borderColor: "#0b3b66",
+
+                backgroundColor: "rgba(11,59,102,0.15)",
+
+                fill: true,
+
+                tension: 0.4
+
+            }]
+
+        }
+
+    });
+
+}
+
+// ==============================
+// Monthly Bookings Chart
+// ==============================
+
+function loadBookingChart(bookings) {
+
+    const monthlyBookings = new Array(12).fill(0);
+
+    bookings.forEach(booking => {
+
+        const month = new Date(booking.createdAt).getMonth();
+
+        monthlyBookings[month]++;
+
+    });
+
+    const ctx = document.getElementById("bookingChart");
+
+    if (!ctx) return;
+
+    if (window.bookingChart instanceof Chart) {
+        window.bookingChart.destroy();
+    }
+
+    window.bookingChart = new Chart(ctx, {
+
+        type: "bar",
+
+        data: {
+
+            labels: [
+                "Jan","Feb","Mar","Apr","May","Jun",
+                "Jul","Aug","Sep","Oct","Nov","Dec"
+            ],
+
+            datasets: [{
+
+                label: "Bookings",
+
+                data: monthlyBookings,
+
+                backgroundColor: "#d4af37",
+
+                borderColor: "#b89225",
+
+                borderWidth: 1
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            plugins: {
+
+                legend: {
+
+                    display: true
+
+                }
+
+            },
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true,
+
+                    ticks: {
+
+                        precision: 0
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+// ==============================
+// SHOW PAYMENTS
+// ==============================
+
+async function showPayments() {
+
+    document.getElementById("dashboardContent").style.display = "none";
+    document.getElementById("contentArea").style.display = "block";
+
+    try {
+
+        const response = await fetch("/api/bookings");
+
+        const bookings = await response.json();
+
+        document.getElementById("contentArea").innerHTML = `
+
+            <h2>
+                <i class="fa-solid fa-credit-card"></i>
+                Payments
+            </h2>
+
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Guest</th>
+
+                        <th>Room</th>
+
+                        <th>Booking Date</th>
+
+                        <th>Amount</th>
+
+                        <th>Payment ID</th>
+
+                        <th>Status</th>
+
+                        <th>Invoice</th>
+
+                    </tr>
+                </thead>
+
+                <tbody id="paymentsBody"></tbody>
+
+            </table>
+
+        `;
+
+        const body = document.getElementById("paymentsBody");
+
+        bookings.forEach(booking => {
+
+            body.innerHTML += `
+
+                <tr>
+
+                    <td>${booking.customerName}</td>
+
+                    <td>${booking.roomId?.roomName || "-"}</td>
+
+                    <td>${new Date(booking.createdAt).toLocaleDateString("en-IN")}</td>
+
+                    <td>₹${booking.totalPrice}</td>
+
+                    <td>${booking.paymentId || "-"}</td>
+
+                    <td>
+
+                        <span style="color:${booking.paymentStatus==="Paid" ? "green":"red"}">
+
+                            ${booking.paymentStatus}
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button onclick="window.open('/api/invoice/${booking._id}','_blank')">
+
+                            📄 View
+
+                        </button>
+
+                    </td>
+
+                </tr>
+            `;
+
+        });
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+function logoutAdmin() {
+
+    localStorage.removeItem("admin");
+    localStorage.removeItem("adminLoggedIn");
+    localStorage.removeItem("adminUsername");
+
+    window.location.href = "admin-login.html";
+
+}

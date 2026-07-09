@@ -34,6 +34,7 @@ loginForm.addEventListener("submit", async (e) => {
 
             localStorage.setItem("adminLoggedIn", "true");
             localStorage.setItem("adminUsername", result.admin.username);
+            localStorage.setItem("admin", JSON.stringify(result.admin));
 
             window.location.href = "admin-dashboard.html";
         }else{

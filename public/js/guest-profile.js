@@ -189,3 +189,63 @@ async function changePassword() {
     }
 
 }
+// Upload Profile Photo
+
+document
+    .getElementById("imageInput")
+    .addEventListener("change", uploadImage);
+
+async function uploadImage() {
+
+    const file = document.getElementById("imageInput").files[0];
+
+    if (!file) return;
+
+    const formData = new FormData();
+
+    formData.append("profileImage", file);
+
+    try {
+
+        const response = await fetch(
+
+            `/api/guests/upload-photo/${guestId}`,
+
+            {
+
+                method: "POST",
+
+                body: formData
+
+            }
+
+        );
+
+        const data = await response.json();
+
+        if (data.success) {
+
+            document.getElementById("profileImage").src =
+                `/uploads/${data.profileImage}?t=${Date.now()}`;
+
+            alert("Profile photo updated successfully!");
+
+        }
+
+        else {
+
+            alert(data.message);
+
+        }
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+        alert("Upload Failed.");
+
+    }
+
+}

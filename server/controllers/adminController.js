@@ -6,6 +6,20 @@ const registerAdmin = async (req, res) => {
 
     try {
 
+        const adminCount = await Admin.countDocuments();
+
+            if (adminCount > 0) {
+
+                return res.json({
+
+                    success: false,
+
+                    message: "Admin account already exists."
+
+                });
+
+            }
+
         const { username, email, password } = req.body;
 
         const existingAdmin = await Admin.findOne({

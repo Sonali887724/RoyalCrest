@@ -9,7 +9,8 @@ const {
     getGuestProfile,
     uploadProfileImage,
     updateGuestProfile,
-    changePassword
+    changePassword,
+    getAllGuests
 } = require("../controllers/guestController");
 
 
@@ -33,4 +34,7 @@ router.put(
     "/change-password/:id",
     changePassword
 );
+
+router.get("/", getAllGuests);
+
 module.exports = router;
