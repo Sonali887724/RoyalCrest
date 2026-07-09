@@ -206,6 +206,7 @@ loadRecommendedRooms();
 // Logout
 function logoutGuest(){
 
+    localStorage.removeItem("guest");
     localStorage.removeItem("guestId");
     localStorage.removeItem("guestName");
 

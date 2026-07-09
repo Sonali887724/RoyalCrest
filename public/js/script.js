@@ -350,11 +350,13 @@ console.log("Luxury Hotel Website Loaded Successfully");
 
 function updateNavbar() {
 
-    const guest = JSON.parse(localStorage.getItem("guest"));
+    const guestId = localStorage.getItem("guestId");
+    const guestName = localStorage.getItem("guestName");
+
     const admin = JSON.parse(localStorage.getItem("admin"));
 
     // Guest Logged In
-    if (guest) {
+    if (guestId) {
 
         document.getElementById("loginNav").style.display = "none";
         document.getElementById("registerNav").style.display = "none";
@@ -364,7 +366,7 @@ function updateNavbar() {
         document.getElementById("guestNameNav").style.display = "block";
         document.getElementById("logoutNav").style.display = "block";
 
-        document.getElementById("guestName").textContent = guest.name || guest.username;
+        document.getElementById("guestName").textContent = guestName;
 
         return;
     }
@@ -388,6 +390,39 @@ function updateNavbar() {
 
         return;
     }
+
+    // Visitor (Not Logged In)
+
+        document.getElementById("loginNav").style.display = "block";
+        document.getElementById("registerNav").style.display = "block";
+        document.getElementById("adminNav").style.display = "block";
+
+        document.getElementById("myBookingsNav").style.display = "none";
+        document.getElementById("guestNameNav").style.display = "none";
+        document.getElementById("logoutNav").style.display = "none";
+
+        document.getElementById("dashboardNav").style.display = "none";
+
+        document.getElementById("servicesNav").style.display = "block";
+        document.getElementById("galleryNav").style.display = "block";
+
+        document.getElementById("bookNowBtn").style.display = "inline-block";
+
+}
+
+
+
+function logoutGuest(){
+
+    localStorage.removeItem("guestLoggedIn");
+    localStorage.removeItem("guestId");
+    localStorage.removeItem("guestName");
+
+    updateNavbar();
+
+    alert("Logged out successfully.");
+
+    window.location.href = "index.html";
 
 }
 
