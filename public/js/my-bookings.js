@@ -49,7 +49,7 @@ async function loadBookings() {
 
                 <img
                     class="room-image"
-                    src="${booking.roomId.image}"
+                    src="/images/${booking.roomId.image}"
                     alt="${booking.roomId.roomName}"
                 >
 
@@ -149,8 +149,9 @@ async function cancelBooking(id) {
 
 }
 
-function viewBooking(id) {
+function viewBooking(id){
 
-    alert("Booking ID : " + id);
+    window.location.href =
+    `booking-details.html?id=${id}`;
 
 }

@@ -205,3 +205,36 @@ grid-template-columns:1fr;
 }
 
 }
+
+.top-actions{
+    margin:20px 0;
+}
+
+.dashboard-btn{
+
+    background:#0b3b66;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    transition:0.3s;
+}
+
+.dashboard-btn:hover{
+
+    background:#14508c;
+
+    transform:translateY(-2px);
+
+}

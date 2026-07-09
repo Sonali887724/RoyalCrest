@@ -17,31 +17,93 @@
 
 <body>
 
-    <nav class="navbar">
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
 
         <h2>Royal Crest</h2>
 
-        <div>
+        <ul>
 
-            <a href="index.html">Home</a>
+            <li>
+                <a href="guest-dashboard.html">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
 
-            <a href="my-bookings.html">My Bookings</a>
+            <li>
+                <a href="guest-rooms.html">
+                    <i class="fa-solid fa-bed"></i>
+                    Book Room
+                </a>
+            </li>
 
-            <a href="booking.html">Book Room</a>
+            <li>
+                <a href="my-bookings.html">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    My Bookings
+                </a>
+            </li>
 
-            <a href="#" onclick="logoutGuest()">Logout</a>
+            <li>
+                <a href="guest-profile.html">
+                    <i class="fa-solid fa-user"></i>
+                    My Profile
+                </a>
+            </li>
 
-        </div>
+            <li>
+                <a href="#" onclick="logoutGuest()">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
 
-    </nav>
+        </ul>
 
-    <section class="dashboard">
+    </aside>
 
-        <h1 id="welcomeText">Welcome Guest</h1>
+    <!-- Main Content -->
+
+    <main class="content">
+
+       <section class="hero">
+
+    <div class="hero-text">
+
+        <h1 id="welcomeText">Welcome 👋</h1>
+
+        <h2>Experience Luxury Like Never Before</h2>
+
+        <p>
+            Discover premium rooms, exceptional comfort and unforgettable
+            hospitality at Royal Crest Hotel.
+        </p>
+
+        <button onclick="location.href='guest-rooms.html'">
+            Book Your Stay
+        </button>
+
+    </div>
+
+    <div class="hero-image">
+
+        <img src="images/hotel-banner.jpg"
+             alt="Royal Crest Hotel">
+
+    </div>
+
+</section>
+
+
+        <!-- Quick Action Cards -->
 
         <div class="cards">
 
-            <div class="card" onclick="location.href='booking.html'">
+            <div class="card"
+                 onclick="location.href='guest-rooms.html'">
 
                 <i class="fa-solid fa-bed"></i>
 
@@ -49,7 +111,8 @@
 
             </div>
 
-            <div class="card" onclick="location.href='my-bookings.html'">
+            <div class="card"
+                 onclick="location.href='my-bookings.html'">
 
                 <i class="fa-solid fa-calendar-check"></i>
 
@@ -57,15 +120,17 @@
 
             </div>
 
-            <div class="card">
+            <div class="card" 
+                 onclick="location.href='guest-profile.html'">
 
                 <i class="fa-solid fa-user"></i>
 
-                <h3>Profile</h3>
+                <h3>My Profile</h3>
 
             </div>
 
-            <div class="card" onclick="logoutGuest()">
+            <div class="card"
+                 onclick="logoutGuest()">
 
                 <i class="fa-solid fa-right-from-bracket"></i>
 
@@ -75,9 +140,163 @@
 
         </div>
 
-    </section>
+        <!-- Booking Statistics -->
 
-    <script src="js/guest-dashboard.js"></script>
+        <section class="stats-section">
+
+            <h2>Your Booking Summary</h2>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                    <h3>Total Bookings</h3>
+
+                    <p id="totalBookings">0</p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <h3>Active Bookings</h3>
+
+                    <p id="activeBookings">0</p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <i class="fa-solid fa-ban"></i>
+
+                    <h3>Cancelled</h3>
+
+                    <p id="cancelledBookings">0</p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                    <h3>Total Spent</h3>
+
+                    <p id="totalSpent">₹0</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Recent Booking -->
+
+        <section class="recommended-section">
+
+            <h2>Recommended Rooms</h2>
+
+            <div id="recommendedRooms" class="recommended-grid">
+
+                Loading Rooms...
+
+            </div>
+
+        </section>
+
+        <!-- Profile Section -->
+
+
+        <section class="profile-section">
+
+            <h2>My Profile</h2>
+
+            <div class="profile-card">
+
+                <div class="profile-left">
+
+                <img
+                    id="profileImage"
+                    src="/uploads/default-avatar.jpg"
+                    alt="Profile Image"
+                >
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                    hidden
+                >
+
+                <button
+                    class="upload-btn"
+                    onclick="document.getElementById('imageInput').click()">
+
+                    Upload Photo
+
+                </button>
+
+            </div>
+
+                <div class="profile-right">
+
+                    <h3 id="profileName">Loading...</h3>
+
+                    <p>
+                        <strong>Email:</strong>
+                        <span id="profileEmail">Loading...</span>
+                    </p>
+
+                    <p>
+                        <strong>Phone:</strong>
+                        <span id="profilePhone">Loading...</span>
+                    </p>
+
+                    <p>
+                        <strong>Member Since:</strong>
+                        <span id="profileDate">Loading...</span>
+                    </p>
+
+                    <button
+                        class="edit-profile-btn"
+                        onclick="location.href='guest-profile.html'">
+
+                        Edit Profile
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Offers -->
+
+        <section class="recent-booking">
+
+            <h2>Exclusive Offers</h2>
+
+            <ul>
+
+                <li>🎉 20% OFF on Luxury Suites</li>
+
+                <li>🍽 Complimentary Breakfast</li>
+
+                <li>🕒 Free Early Check-in & Late Check-out</li>
+
+            </ul>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/guest-dashboard.js"></script>
+
 </body>
 
 </html>

@@ -5,24 +5,43 @@ const Booking = require("../models/Booking");
 // ===============================
 
 const createBooking = async (req, res) => {
+
     try {
 
-        const booking = await Booking.create(req.body);
+        const bookingData = {
+
+            ...req.body,
+
+            status: "Confirmed"
+
+        };
+
+        const booking = await Booking.create(bookingData);
 
         res.status(201).json({
+
             success: true,
+
             message: "Booking Created Successfully",
+
             booking
-        });
 
-    } catch (error) {
-
-        res.status(500).json({
-            success: false,
-            message: error.message
         });
 
     }
+
+    catch (error) {
+
+        res.status(500).json({
+
+            success: false,
+
+            message: error.message
+
+        });
+
+    }
+
 };
 
 
@@ -132,9 +151,59 @@ const cancelBooking = async (req, res) => {
     }
 
 };
+
+// ===============================
+// GET SINGLE BOOKING
+// ===============================
+
+const getBookingById = async (req, res) => {
+
+    try {
+
+        const booking = await Booking.findById(req.params.id)
+            .populate("roomId")
+            .populate("guestId");
+
+        if (!booking) {
+
+            return res.status(404).json({
+
+                success: false,
+
+                message: "Booking not found"
+
+            });
+
+        }
+
+        res.status(200).json({
+
+            success: true,
+
+            booking
+
+        });
+
+    }
+
+    catch (error) {
+
+        res.status(500).json({
+
+            success: false,
+
+            message: error.message
+
+        });
+
+    }
+
+};
 module.exports = {
     createBooking,
     getAllBookings,
     getGuestBookings,
+    getBookingById,
     cancelBooking
 };
+    

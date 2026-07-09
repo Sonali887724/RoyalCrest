@@ -109,12 +109,42 @@ We look forward to welcoming you.
 
 </p>
 
-<a href="index.html">Return to Home</a>
+<h3 id="bookingIdText"></h3>
 
-<a href="index.html#rooms">Book Another Room</a>
+<a href="guest-dashboard.html">🏠 Dashboard</a>
+
+<a href="my-bookings.html">📅 My Bookings</a>
+
+<a id="viewBookingBtn" href="#">📋 View Booking Details</a>
+
+<a id="downloadInvoiceBtn" href="#">📄 Download Invoice</a>
+
+<a href="guest-rooms.html">🛏 Book Another Room</a>
+
+<a href="index.html">🏡 Public Home</a>
 
 </div>
 
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const bookingId = params.get("id");
+
+if (bookingId) {
+
+    document.getElementById("bookingIdText").innerHTML =
+        `Booking ID: <strong>${bookingId}</strong>`;
+
+    document.getElementById("viewBookingBtn").href =
+        `booking-details.html?id=${bookingId}`;
+
+    document.getElementById("downloadInvoiceBtn").href =
+        `/api/invoice/${bookingId}`;
+
+}
+
+</script>
 </body>
 
 </html>

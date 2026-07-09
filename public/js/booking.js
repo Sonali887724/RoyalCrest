@@ -49,6 +49,7 @@ async function loadRoom() {
         const room = await response.json();
 
         roomPrice = room.price;
+        calculateTotal();
 
         roomPriceText.textContent = `Room Price: ₹${roomPrice} / Night`;
 
@@ -74,21 +75,31 @@ function calculateTotal() {
     const checkIn = document.getElementById("checkIn").value;
     const checkOut = document.getElementById("checkOut").value;
 
-    if (!checkIn || !checkOut) return;
+    if (!checkIn || !checkOut) {
 
-    const days = Math.ceil(
-        (new Date(checkOut) - new Date(checkIn)) /
-        (1000 * 60 * 60 * 24)
-    );
+        totalDaysText.textContent = "Total Days: 0";
+        totalAmountText.textContent = "Total Amount: ₹0";
+
+        return;
+    }
+
+    const start = new Date(checkIn);
+    const end = new Date(checkOut);
+
+    let days = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+
+    if (days <= 0) {
+
+        days = 1;
+
+    }
 
     const total = days * roomPrice;
 
-    document.getElementById("bookingSummary").innerHTML = `
-        <h3>Booking Summary</h3>
-        <p><strong>Room Price:</strong> ₹${roomPrice}</p>
-        <p><strong>Total Days:</strong> ${days}</p>
-        <p><strong>Total Amount:</strong> ₹${total}</p>
-    `;
+    roomPriceText.textContent = `Room Price: ₹${roomPrice}`;
+    totalDaysText.textContent = `Total Days: ${days}`;
+    totalAmountText.textContent = `Total Amount: ₹${total}`;
+
 }
 
 document.getElementById("checkIn").addEventListener("change", calculateTotal);
@@ -123,29 +134,112 @@ bookingForm.addEventListener("submit", async (e) => {
 
     try {
 
-        const response = await fetch("/api/bookings", {
+        // Create Razorpay Order
+        const orderResponse = await fetch("/api/payment/create-order", {
+
             method: "POST",
+
             headers: {
+
                 "Content-Type": "application/json"
+
             },
-            body: JSON.stringify(bookingData)
+
+            body: JSON.stringify({
+
+                amount: bookingData.totalPrice
+
+            })
+
         });
 
-        const result = await response.json();
+        const orderData = await orderResponse.json();
 
-        if (result.success) {
+        if (!orderData.success) {
 
-            window.location.href = "booking-success.html";
+            alert("Unable to start payment.");
 
-        } else {
-
-            alert(result.message);
+            return;
 
         }
 
-    } catch (error) {
+        const options = {
 
-        console.error(error);
+            key: "rzp_test_TAxuoScXZBdjIt", // Replace with your Razorpay key
+
+            amount: orderData.order.amount,
+
+            currency: orderData.order.currency,
+
+            name: "Royal Crest",
+
+            description: "Room Booking Payment",
+
+            order_id: orderData.order.id,
+
+            handler: async function (response) {
+
+                // Payment Successful
+                const bookingResponse = await fetch("/api/bookings", {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type": "application/json"
+
+                    },
+
+                    body: JSON.stringify({
+
+                        ...bookingData,
+
+                        paymentId: response.razorpay_payment_id,
+
+                        orderId: response.razorpay_order_id,
+
+                        paymentStatus: "Paid"
+
+                    })
+
+                });
+
+                const bookingResult = await bookingResponse.json();
+
+                if (bookingResult.success) {
+
+                    window.location.href =
+                        `booking-success.html?id=${bookingResult.booking._id}`;
+
+                }
+
+                else {
+
+                    alert("Booking could not be saved.");
+
+                }
+
+            },
+
+            theme: {
+
+                color: "#0b3b66"
+
+            }
+
+        };
+
+        const rzp = new Razorpay(options);
+
+        rzp.open();
+
+    }
+
+    catch (error) {
+
+        console.log(error);
+
+        alert("Payment failed.");
 
     }
 

@@ -127,8 +127,173 @@ const getGuestProfile = async (req, res) => {
 
 };
 
+const uploadProfileImage = async (req, res) => {
+
+    try {
+
+        const guest = await Guest.findById(req.params.id);
+
+        if (!guest) {
+
+            return res.status(404).json({
+                success: false,
+                message: "Guest not found"
+            });
+
+        }
+
+        guest.profileImage = req.file.filename;
+
+        await guest.save();
+
+        res.json({
+            success: true,
+            message: "Profile photo updated successfully.",
+            profileImage: guest.profileImage
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+
+    }
+
+};
+
+const updateGuestProfile = async (req, res) => {
+
+    try {
+
+        const { name, phone } = req.body;
+
+        const guest = await Guest.findByIdAndUpdate(
+
+            req.params.id,
+
+            {
+
+                name,
+
+                phone
+
+            },
+
+            {
+
+                new: true
+
+            }
+
+        );
+
+        res.json({
+
+            success: true,
+
+            guest
+
+        });
+
+    }
+
+    catch (err) {
+
+        console.log(err);
+
+        res.status(500).json({
+
+            success: false,
+
+            message: "Profile update failed"
+
+        });
+
+    }
+
+};
+
+const changePassword = async (req, res) => {
+
+    try {
+
+        const { currentPassword, newPassword } = req.body;
+
+        const guest = await Guest.findById(req.params.id);
+
+        if (!guest) {
+
+            return res.status(404).json({
+
+                success: false,
+                message: "Guest not found"
+
+            });
+
+        }
+
+        const match = await bcrypt.compare(
+
+            currentPassword,
+
+            guest.password
+
+        );
+
+        if (!match) {
+
+            return res.json({
+
+                success: false,
+                message: "Current password is incorrect"
+
+            });
+
+        }
+
+        const hashedPassword = await bcrypt.hash(
+
+            newPassword,
+
+            10
+
+        );
+
+        guest.password = hashedPassword;
+
+        await guest.save();
+
+        res.json({
+
+            success: true,
+            message: "Password changed successfully"
+
+        });
+
+    }
+
+    catch (error) {
+
+        res.status(500).json({
+
+            success: false,
+            message: error.message
+
+        });
+
+    }
+
+};
+
 module.exports = {
     registerGuest,
     loginGuest,
-    getGuestProfile
+    getGuestProfile,
+    uploadProfileImage,
+    updateGuestProfile,
+    changePassword
 };
+
+   

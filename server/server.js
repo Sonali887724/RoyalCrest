@@ -7,6 +7,8 @@ const roomRoutes = require("./routes/roomRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const guestRoutes = require("./routes/guestRoutes");
+const paymentRoutes = require("./routes/paymentRoutes");
+const invoiceRoutes = require("./routes/invoiceRoutes");
 
 const connectDB = require("./config/db");
 
@@ -26,12 +28,19 @@ app.use("/api/rooms", roomRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/guests", guestRoutes);
+app.use("/api/payment", paymentRoutes);
+app.use("/api/invoice", invoiceRoutes);
+
 
 // Serve frontend
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/index.html"));
+});
+
+app.get("/test", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/uploads/default-avatar.jpg"));
 });
 
 app.listen(PORT, () => {
