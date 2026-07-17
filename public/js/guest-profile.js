@@ -18,9 +18,8 @@ async function loadProfile() {
 
             document.getElementById("phone").value = data.guest.phone;
 
-            document.getElementById("profileImage").src =
-                "/uploads/" + data.guest.profileImage;
-
+          document.getElementById("profileImage").src =
+            data.guest.profileImage || "/images/default-avatar.jpg";
         }
 
     } catch (error) {
@@ -225,8 +224,8 @@ async function uploadImage() {
 
         if (data.success) {
 
-            document.getElementById("profileImage").src =
-                `/uploads/${data.profileImage}?t=${Date.now()}`;
+           document.getElementById("profileImage").src =
+            `${data.profileImage}?t=${Date.now()}`;
 
             alert("Profile photo updated successfully!");
 

@@ -235,7 +235,7 @@ async function loadProfile() {
         document.getElementById("profilePhone").textContent =
             result.guest.phone;
         document.getElementById("profileImage").src =
-         `/uploads/${result.guest.profileImage}`;    
+        result.guest.profileImage || "/images/default-avatar.jpg";    
 
         document.getElementById("profileDate").textContent =
             new Date(result.guest.createdAt).toLocaleDateString();
@@ -279,7 +279,7 @@ async function uploadImage() {
         if (result.success) {
 
             document.getElementById("profileImage").src =
-                `/uploads/${result.profileImage}?t=${Date.now()}`;
+            result.profileImage + "?t=" + Date.now();
 
             alert("Profile photo updated successfully!");
 

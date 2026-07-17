@@ -1,5 +1,9 @@
+const cloudinary = require("../config/cloudinary");
+const streamifier = require("streamifier");
+
 const Guest = require("../models/Guest");
 const bcrypt = require("bcrypt");
+
 
 // Register Guest
 const registerGuest = async (req, res) => {
@@ -134,29 +138,66 @@ const uploadProfileImage = async (req, res) => {
         const guest = await Guest.findById(req.params.id);
 
         if (!guest) {
-
             return res.status(404).json({
                 success: false,
                 message: "Guest not found"
             });
-
         }
 
-        guest.profileImage = req.file.filename;
+        if (!req.file) {
+            return res.status(400).json({
+                success: false,
+                message: "No image selected."
+            });
+        }
+
+        const uploadFromBuffer = () => {
+
+            return new Promise((resolve, reject) => {
+
+                const uploadStream = cloudinary.uploader.upload_stream(
+                    {
+                        folder: "RoyalCrest/ProfilePhotos"
+                    },
+                    (error, result) => {
+
+                        if (error) return reject(error);
+
+                        resolve(result);
+
+                    }
+                );
+
+                streamifier.createReadStream(req.file.buffer)
+                    .pipe(uploadStream);
+
+            });
+
+        };
+
+        const result = await uploadFromBuffer();
+
+        guest.profileImage = result.secure_url;
 
         await guest.save();
 
         res.json({
+
             success: true,
             message: "Profile photo updated successfully.",
             profileImage: guest.profileImage
+
         });
 
     } catch (error) {
 
+        console.error(error);
+
         res.status(500).json({
+
             success: false,
             message: error.message
+
         });
 
     }
